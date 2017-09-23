@@ -3,7 +3,6 @@ package proj.meditrac.core;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 import proj.meditrac.core.enums.Configuration;
@@ -18,7 +17,7 @@ public class ConfigurationManager {
 	private static ConfigurationManager instance = new ConfigurationManager();;
 	
 	private static FileInputStream fs;
-	private static InputStream is;
+	
 	private static Properties props;
 	
 	private static final String PROP_PREFIX = "meditrac.";
