@@ -15,15 +15,14 @@ public final class Authenticator {
 
 	private Authenticator(){};
 	
-	public static Member authenticate(long id, String pass) throws ConnectException, SchemaException{
+	public static Member authenticate(String id, String pass) throws ConnectException, SchemaException{
 		Session session = Persistence.getSessionFactory().openSession();
 		Criteria criteria = session.createCriteria(Member.class);
 
 		Criterion idCriterion = Restrictions.eq("id", id);
 		Criterion passCriterion = Restrictions.eq("password", Utility.encrypt(pass));
-		Criterion activeCriterion = Restrictions.eq("active", Member.Active.ACTIVE);
 
-		criteria.add(idCriterion).add(passCriterion).add(activeCriterion);
+		criteria.add(idCriterion).add(passCriterion);
 		Member m = (Member) criteria.uniqueResult();
 		session.close();
 		return m;

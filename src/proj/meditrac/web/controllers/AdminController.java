@@ -308,7 +308,7 @@ public class AdminController extends HttpServlet {
 		Transaction tx=sess.beginTransaction();
 		String password=Utility.randomAlphanumeric(6);
 		Member m=new Member();
-		m.setId(Long.parseLong(hosId));
+		m.setId(hosId);
 		m.setPassword(password);
 		m.setGroup(Member.Group.HOSPITAL);
 		m.setCreatedAt(new Date());

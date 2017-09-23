@@ -12,7 +12,7 @@ public class Member implements Serializable {
 	 */
 	private static final long serialVersionUID = 588329871894721259L;
 	
-	private long id;
+	private String id;
 	private String password;
 	private String group;
 	private Date createdAt;
@@ -35,7 +35,7 @@ public class Member implements Serializable {
 		super();
 	}
 
-	public Member(long id, String password, String group, Date createdAt, Date lastLogin, String active) {
+	public Member(String id, String password, String group, Date createdAt, Date lastLogin, String active) {
 		super();
 		this.id = id;
 		this.password = Utility.encrypt(password);
@@ -45,11 +45,11 @@ public class Member implements Serializable {
 		this.active = active;
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

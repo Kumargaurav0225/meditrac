@@ -80,8 +80,8 @@ public class PatientController extends HttpServlet {
 			s.save(patient);
 			tx.commit();
 			s.close();
-		} catch (HibernateException | ConnectException | SchemaException e) {			
-			System.out.println("***************Error in Connection*********************");
+		} catch (HibernateException | ConnectException | SchemaException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

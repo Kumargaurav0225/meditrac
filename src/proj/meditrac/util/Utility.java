@@ -4,13 +4,10 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 
-import proj.meditrac.core.enums.SessionParams;
+import proj.meditrac.core.enums.MemberType;
 
 public final class Utility {
 
@@ -47,63 +44,23 @@ public final class Utility {
 	/*
 	 * Application specific utility methods
 	 */
-	public static long generateMemberId(){		
-		return System.currentTimeMillis();
-	}
-	
-	
-	/*
-	 * Check session
-	 */
-	public static boolean checkCookie(HttpServletRequest request){
-		HttpSession session = request.getSession();
-		if(session.isNew())
-			return false;
-		
-		if(session.getAttribute(SessionParams.MEMBER.getParamName()) != null)
-			return true;
-		else {
-			session.invalidate();
-			return false;
-		}
-	}
-	
-	/*
-	 * Check request parameters
-	 */
-	public static boolean checkParams(HttpServletRequest request,String[] params){
-		boolean flag = true;
-		
-		for(String param : params){
-			if(request.getParameter(param) == null){
-				flag = false;
+	public static String generateMemberId(MemberType m){		
+		StringBuilder s = new StringBuilder();
+		switch(m){
+			case ADMINISTRATOR:
+				
 				break;
-			}
+			case HOSPITAL:
+				
+				break;
+			case DOCTOR:
+				
+				break;
+			case PATIENT:
+				
+				break;
 		}
-			
-		return flag;
+		return s.toString();
 	}
 	
-	/*
-	 * Get param
-	 */
-	
-	
-	/*
-	 * Is number
-	 */
-	public static boolean isNumber(String input){
-		if(input.matches("[0-9]+"))
-			return true;
-		else
-			return false;
-	}
-	
-	/*
-	 * Is email
-	 */
-	public static boolean isEmail(String input){
-		//if(input.matches())
-		return true;
-	}
 }
