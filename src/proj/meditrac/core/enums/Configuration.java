@@ -2,17 +2,19 @@ package proj.meditrac.core.enums;
 
 public enum Configuration {
 
-	CONN_DRIVER("conn_driver","oracle.jdbc.driver.OracleDriver"),
+	CONN_DRIVER("conn_driver","com.mysql.jdbc.Driver"),
 	
-	CONN_URL("conn_url","jdbc:oracle:thin:@localhost:1521:XE"),
+	CONN_URL("conn_url","jdbc:mysql://localhost:3306/"),
 	
-	HIBERNATE_DIALECT("hibernate_dialect","org.hibernate.dialect.OracleDialect"),
+	DATABASE_NAME("database_name","SYS_MEDITRAC"),
+	
+	HIBERNATE_DIALECT("hibernate_dialect","org.hibernate.dialect.MySQLDialect"),
 	
 	HIBERNATE_MAPPING("hibernate_mapping","Mapping.hbm.xml"),
 	
-	CONN_USER("conn_user","xe"),
+	CONN_USER("conn_user","root"),
 
-	CONN_PASSWORD("conn_password","hr"),
+	CONN_PASSWORD("conn_password",""),
 		
 	HBM2DDL("hbm2ddl.auto","update"),
 	
@@ -24,15 +26,17 @@ public enum Configuration {
 	
 	SMTP_AUTH("smtp_auth","true"),
 	
-	SMTP_STARTTLS_ENABLE("smtp_starttls_enable","true"),
+	SMTP_STARTTLS_ENABLE("smtp_starttls_enable","false"),
 	
 	SMTP_HOST("smtp_host","smtp.gmail.com"),
 	
 	SMTP_PORT("smtp_port","587"),
 	
-	EMAIL_ID("email_id","lenka.manoj95@gmail.com"),
+	EMAIL_ID("email_id","meditrac.responder@gmail.com"),
 	
-	EMAIL_PASSWORD("email_password","98068)#(*)maN");
+	EMAIL_PASSWORD("email_password","meditrac.project"),
+	
+	TEMPLATE_DIR("template_dir","WEB-INF/jsp/");
 	
 	private String propName;
 	private String defaultProp;

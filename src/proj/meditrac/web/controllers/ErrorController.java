@@ -21,9 +21,9 @@ public class ErrorController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		switch(request.getParameter("type")){
-//			case _404:
-//				request.getRequestDispatcher("WEB-INF/jsp/errors/404.jsp").forward(request, response);
-//				break;
+			case _404:
+				request.getRequestDispatcher("WEB-INF/jsp/errors/404.jsp").forward(request, response);
+				break;
 			case _500:
 				request.getRequestDispatcher("WEB-INF/jsp/errors/500.jsp").forward(request, response);
 				break;

@@ -7,65 +7,12 @@
 	<class name="proj.meditrac.entities.Member" table="SYSTEM_MEMBERS">
 
 		<id name="id" column="SYS_ID" />
-		<property name="password" column="PASS_ENC" />
-		<property name="group" column="USER_GROUP" />
-		<property name="active" column="IS_ACTIVE" />
-		<property name="createdAt" column="CREATED_AT" />
+		<property name="password" column="PASS_ENC" not-null="true" length="32" />
+		<property name="group" column="USER_GROUP" not-null="true" length="16"/>
+		<property name="active" column="IS_ACTIVE" not-null="true" length="10"/>
+		<property name="createdAt" column="CREATED_AT" not-null="true"/>
 		<property name="lastLogin" column="LAST_LOGIN" />
-	</class>
-	<class name="proj.meditrac.entities.Hospital" table="ADD_HOSPITAL">
-		<id name="insertionId" column="INS_ID"/>
-		<property name="hosName" column="hospital_Name" length="50"/>
-		<property name="hosCode" column="hospital_Licence_Key" length="15"/>
-		<property name="state" column="State" length="20"/>
-		<property name="city" column="City" length="20"/>
-		<property name="district" column="District" length="15"/>
-		<property name="zip" column="zip" length="6"/>
-		<property name="date" column="Date_Of_Establishment" length="20"/>
-		<property name="verified" column="VERIFIED" length="6"/>
-		<property name="blacklisted" column="BLACKLISTED" length="6"/>
-		<property name="email" column="email" length="30"/>
-		<property name="telephone" column="telephone" length="12"/>
-		<property name="specialities" column="specialities" length="15"/>
-	</class>
-	<class name="proj.meditrac.entities.Doctor" table="ADD_DOCTOR">
-		<id name="dID" column="D_ID"/>
-		<property name="doctorName" column="Doctor_Name" length="50"/>
-		<property name="gender" column="Gender" length="15"/>
-		<property name="specialisation" column="Specialisation" length="20"/>
-		<property name="experience" column="Experience" length="20"/>
-		<property name="dob" column="DOB" length="8"/>
-		<property name="email" column="Email" length="30"/>
-		<property name="city" column="City" length="20"/>
-		<property name="district" column="District" length="20"/>
-		<property name="state" column="State" length="20"/>
-		<property name="phone" column="Phone" length="10"/>
-		<property name="ptc" column="Zip" length="6"/>
-		<many-to-one name="hospital" cascade="save-update" column="reff_INS_id"
-			class="proj.meditrac.entities.Hospital" />
-		<set name="patient" table="doctors_patients" cascade="save-update" inverse="true">
-			<key column="reff_dID" />
-			<many-to-many class="proj.meditrac.entities.Patient" column="reff_pId" />
-		</set>
-	</class>
-	<class name="proj.meditrac.entities.Patient" table="ADD_PATIENT">
-		<id name="pId" column="P_ID"/>
-		<property name="patientName" column="Patient_Name" length="50"/>
-		<property name="gender" column="Gender" length="15"/>
-		<property name="dob" column="DOB" length="8"/>
-		<property name="email" column="Email" length="30"/>
-		<property name="city" column="City" length="20"/>
-		<property name="district" column="District" length="20"/>
-		<property name="complication" column="Complication" length="20"/>
-		<property name="state" column="State" length="20"/>
-		<property name="phone" column="Phone" length="10"/>
-		<property name="ptc" column="zip" length="6"/>
-		<set name="doctor" table="doctors_patients" cascade="save-update">
-			<key column="reff_pId" />
-			<many-to-many class="proj.meditrac.entities.Doctor" column="reff_dID" />
-		</set>
-		<many-to-one name="hospital" cascade="save-update" column="reff_INS_id"
-			class="proj.meditrac.entities.Hospital" />
+		
 	</class>
 
 </hibernate-mapping>

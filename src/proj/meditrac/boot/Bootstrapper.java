@@ -1,8 +1,5 @@
 package proj.meditrac.boot;
 
-import proj.meditrac.db.Metadata;
-
-
 public class Bootstrapper {
 	
 	/*
@@ -16,12 +13,6 @@ public class Bootstrapper {
 		return instance;
 	}
 	
-	/*
-	 * public instance methods
-	 */
-	public boolean applicationConfigured(){
-		return Metadata.isDBConnected() && Metadata.checkSchemaIntegrity();
-	}
 	
 	
 }

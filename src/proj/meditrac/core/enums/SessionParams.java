@@ -2,7 +2,8 @@ package proj.meditrac.core.enums;
 
 public enum SessionParams {
 
-	MEMBER_ID("member_id");
+	MEMBER("member"),
+	ERROR("error");
 	
 	final private String paramName;
 	

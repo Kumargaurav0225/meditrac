@@ -5,6 +5,8 @@ import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -34,12 +36,55 @@ final public class Metadata {
 			);
 			if(conn == null)
 				flag = false;
+			else
+				createDb();
 		} catch(Exception ex){
 			flag = false;
 		}
 		
 		return flag;
 	}
+	
+	/*
+	 * Check database
+	 */
+	public static boolean databaseExists() throws SQLException{
+		boolean flag = false;
+		if(conn == null){
+			isDBConnected();
+		}
+		
+		List<String> databases = new ArrayList<String>(); 
+		ResultSet rs = conn.createStatement().executeQuery("SHOW DATABASES");
+		while(rs.next())
+			databases.add(rs.getString(1).toUpperCase());		
+		
+		for(String db : databases){
+			if(db.equals(config.getProperty(Configuration.DATABASE_NAME))){
+				flag = true;
+				break;
+			}
+		}
+
+		return flag;
+	}
+	
+	/*
+	 * Auto create database
+	 */
+	public static void createDb() {
+		if(conn == null){
+			isDBConnected();
+		}
+		
+		String dbSQL = "CREATE SCHEMA IF NOT EXISTS " + config.getProperty(Configuration.DATABASE_NAME);
+		try{
+			conn.createStatement().execute(dbSQL);
+		} catch(SQLException ex){
+			ex.printStackTrace();
+		}
+	}
+	
 	
 	/*
 	 * Database integrity check
@@ -69,7 +114,7 @@ final public class Metadata {
 			flag = false;
 		}
 		
-		return true;
+		return flag;
 	}
 	
 }

@@ -1,7 +1,5 @@
 package proj.meditrac.entities;
 
-public class Hospital {
+public class Administrator {
 
-	
-	
 }

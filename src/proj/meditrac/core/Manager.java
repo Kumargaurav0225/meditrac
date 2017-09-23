@@ -8,14 +8,30 @@ import proj.meditrac.db.Metadata;
 
 public final class Manager {
 
-	private Manager(){};
+	private final Date serverStartTime;
 	
-	private static Date serverUptime;
+	private Manager(){
+		serverStartTime = new Date();
+	};
+	
+	private static Manager instance;
 	
 	private static List<Exception> exceptions = new ArrayList<Exception>();
 	
+	static {
+		instance = new Manager();
+	}
+	
+	public static Manager getInstance(){
+		return instance;
+	}
+	
+	public Date getServerStartTime(){
+		return this.serverStartTime;
+	}
+	
 	public static boolean isMeditracIntact(){
-		return Metadata.isDBConnected() && Metadata.checkSchemaIntegrity();
+		return Metadata.isDBConnected();
 	}
 	
 	public void addException(Exception ex){
