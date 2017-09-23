@@ -1,0 +1,42 @@
+* {
+  outline: none !important;
+}
+
+body {
+  min-width: 1024px;
+}
+
+.nav-icon {
+  color: #3A6068;
+  font-size: 22px;
+}
+
+.navbar-brand {
+  padding: 12px;
+}
+
+nav {
+  margin-bottom: 0px !important;
+}
+
+.hero { 	
+  background-color: #f5f5f5;
+  margin-bottom: 24px;
+}
+
+.user-dp {
+  text-align: center;
+}
+
+.user-dp img {
+  border-radius: 80px;
+  margin-top: 32px;
+}
+
+.user-details {
+  margin: 12px;
+}
+
+.user-details h3 {
+  font-weight: 100;
+}
